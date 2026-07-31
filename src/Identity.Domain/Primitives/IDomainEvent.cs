@@ -1,0 +1,6 @@
+namespace Identity.Domain.Primitives;
+
+public interface IDomainEvent
+{
+    DateTime OccurredOn { get; }
+}
