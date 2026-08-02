@@ -1,11 +1,11 @@
 namespace Identity.Domain.Primitives;
 
-public class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
+public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
 {
 
     public TId Id { get; }
 
-    public Entity(TId id)
+    protected Entity(TId id)
     {
         Id = id;
     }
