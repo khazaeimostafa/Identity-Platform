@@ -1,9 +1,9 @@
 namespace Identity.Domain.Primitives;
 
-public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
+public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : IStronglyTypedId
 {
 
-    public TId Id { get; }
+    public TId Id { get; protected init; }
 
     protected Entity(TId id)
     {
@@ -16,7 +16,7 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
             return false;
         if (ReferenceEquals(this, other)) return true;
 
-        // if (GetType() != other.GetType()) return false;
+     if (GetType() != other.GetType()) return false;
 
         return Id.Equals(other.Id);
     }

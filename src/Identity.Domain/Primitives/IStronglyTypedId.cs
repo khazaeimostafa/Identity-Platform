@@ -1,6 +1,8 @@
 namespace Identity.Domain.Primitives;
 
-public interface IStronglyTypedId<TValue>
+public interface IStronglyTypedId { }
+
+public interface IStronglyTypedId<TValue> : IStronglyTypedId
 {
-    TValue Value { get; }
+    TValue Value { get; protected init; }
 }
