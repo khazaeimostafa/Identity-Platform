@@ -8,6 +8,7 @@ namespace Identity.Domain.Primitives;
 /// Entity را record نمی‌کنیم
 // یک Rule مطلق C# نیست؛ بلکه یک قاعده طراحی DDD
 
+
 public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : IStronglyTypedId
 {
 
