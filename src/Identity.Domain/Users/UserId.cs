@@ -17,9 +17,8 @@ public readonly record struct UserId : IStronglyTypedId
         Value = value;
     }
 
-    public static UserId New() =>
-     new(Ulid.NewUlid());
-    public static UserId From(Ulid value) =>
-     new(value);
+    public static UserId New() => new(Ulid.NewUlid());
+
+    public static UserId From(Ulid value) => new(value);
 
 }

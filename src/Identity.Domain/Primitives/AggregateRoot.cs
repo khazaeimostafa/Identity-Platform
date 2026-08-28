@@ -1,5 +1,12 @@
 namespace Identity.Domain.Primitives;
-
+/// بیرون Aggregate نمی‌توانیم Entityهای داخلی را آزادانه تغییر دهیم.
+/// 
+/// Aggregate Root تصمیم می‌گیرد، Entity تخصص خودش را انجام می‌دهد
+/// 
+/// 
+/// 
+/// 
+/// 
 public abstract class AggregateRoot<TId> : Entity<TId> where TId : IStronglyTypedId
 {
 

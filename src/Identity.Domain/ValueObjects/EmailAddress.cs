@@ -36,8 +36,7 @@ public sealed class EmailAddress : ValueObject
         }
     }
 
-    private static string Normalize(string value)
-    => value.Trim().ToLowerInvariant();
+    private static string Normalize(string value) => value.Trim().ToLowerInvariant();
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

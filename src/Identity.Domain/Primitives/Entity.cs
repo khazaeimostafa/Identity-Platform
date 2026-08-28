@@ -1,4 +1,12 @@
 namespace Identity.Domain.Primitives;
+///
+/// Entity با Identity شناخته می‌شود، نه State.
+/// Entity را record نمی‌کنیم.
+/// record در C# به‌صورت پیش‌فرض Value-based equality دارد.
+/// اما equality یک record بر اساس value/state می‌تواند نتیجه متفاوتی بدهد.
+/// این‌که می‌گوییم: 
+/// Entity را record نمی‌کنیم
+// یک Rule مطلق C# نیست؛ بلکه یک قاعده طراحی DDD
 
 public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : IStronglyTypedId
 {
@@ -12,8 +20,8 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : IStrongl
 
     public bool Equals(Entity<TId>? other)
     {
-        if (other is null)
-            return false;
+        if (other is null) return false;
+
         if (ReferenceEquals(this, other)) return true;
 
      if (GetType() != other.GetType()) return false;
