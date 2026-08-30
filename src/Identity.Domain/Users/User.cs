@@ -1,5 +1,6 @@
+using System.Runtime.InteropServices;
 using Identity.Domain.Primitives;
-using Identity.Domain.Users.Credentials;
+using Identity.Domain.Users.Events;
 
 namespace Identity.Domain.Users;
 ///
@@ -9,20 +10,13 @@ namespace Identity.Domain.Users;
 /// 
 public sealed class User : AggregateRoot<UserId>
 {
+    public User(UserId id) : base(id) { }
 
-
-    public User(UserId id) : base(id)
+    public static User Register(UserId id)
     {
+        var user = new User(id);
+        user.AddDomainEvent(new UserRegisteredDomainEvent(user.Id, DateTimeOffset.UtcNow));
 
-    }
-
-
-    private readonly List<Credential> _credentials = [];
-    public IReadOnlyCollection<Credential> Credentials
-    => _credentials;
-
-    public static User Register()
-    {
-        throw new NotImplementedException();
+        return user;
     }
 }
